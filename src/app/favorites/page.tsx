@@ -68,7 +68,7 @@ export default function FavoritesPage() {
           setServerItems(marketData.items as MarketplaceItem[]);
         }
       })
-      .catch(() => {});
+      .catch(() => { });
     return () => {
       active = false;
     };
@@ -79,7 +79,7 @@ export default function FavoritesPage() {
     if (rawFavsJson) {
       try {
         Object.assign(merged, JSON.parse(rawFavsJson) as Record<string, boolean>);
-      } catch {}
+      } catch { }
     }
     if (Array.isArray(dbFavorites)) {
       for (const item of dbFavorites) {
@@ -95,7 +95,7 @@ export default function FavoritesPage() {
       try {
         const parsed = JSON.parse(rawCustomItemsJson);
         if (Array.isArray(parsed)) localItems = parsed as MarketplaceItem[];
-      } catch {}
+      } catch { }
     }
     const mergedMap = new Map<string, MarketplaceItem>();
     for (const it of [...(dbFavorites || []), ...serverItems, ...localItems, ...DEFAULT_ITEMS]) {
@@ -149,7 +149,7 @@ export default function FavoritesPage() {
           "x-user-email": user.email,
         },
         body: JSON.stringify({ listingId: item.id }),
-      }).catch(() => {});
+      }).catch(() => { });
     }
     showToast(`Removed "${item.name}" from Favorites`);
   };

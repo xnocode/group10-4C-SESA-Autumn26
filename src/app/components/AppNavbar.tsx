@@ -257,7 +257,7 @@ export default function AppNavbar({
           setFetchedSosContact(null);
         }
       })
-      .catch(() => {});
+      .catch(() => { });
 
     return () => {
       active = false;
@@ -278,7 +278,7 @@ export default function AppNavbar({
           if (!active || !d?.ok) return;
           setFetchedUnreadCount(typeof d.unreadCount === "number" ? d.unreadCount : 0);
         })
-        .catch(() => {});
+        .catch(() => { });
     };
 
     refreshNotifications();
@@ -336,7 +336,7 @@ export default function AppNavbar({
             lng = pos.coords.longitude;
             accuracy = pos.coords.accuracy;
           }
-        } catch {}
+        } catch { }
       }
 
       // Campus fallback for desktop browsers / localhost testing where GPS hardware is unavailable
@@ -444,7 +444,7 @@ export default function AppNavbar({
       if (typeof navigator !== "undefined" && navigator.vibrate) {
         try {
           navigator.vibrate([200, 100, 200]);
-        } catch {}
+        } catch { }
       }
 
       triggerSosEmergency();
@@ -592,8 +592,8 @@ export default function AppNavbar({
                     {isTriggering
                       ? "Sending..."
                       : isHolding
-                      ? `Hold (${Math.max(1, Math.ceil((2000 - (holdProgress / 100) * 2000) / 1000))}s)`
-                      : "SOS"}
+                        ? `Hold (${Math.max(1, Math.ceil((2000 - (holdProgress / 100) * 2000) / 1000))}s)`
+                        : "SOS"}
                   </span>
                 </span>
               </button>
@@ -754,14 +754,14 @@ export default function AppNavbar({
               item.href === "/buy-tokens"
                 ? "coin"
                 : item.key === "my-products"
-                ? "box"
-                : item.key === "favorites"
-                ? "heart"
-                : item.key === "notifications"
-                ? "bell"
-                : item.key === "sos"
-                ? "shield"
-                : item.key;
+                  ? "box"
+                  : item.key === "favorites"
+                    ? "heart"
+                    : item.key === "notifications"
+                      ? "bell"
+                      : item.key === "sos"
+                        ? "shield"
+                        : item.key;
             return (
               <Link
                 key={item.href}
