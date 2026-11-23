@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1150 920" width="1150" height="920" style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.12"/>
+    </filter>
+    
+    <!-- Arrow marker for synchronous call -->
+    <marker id="solidArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#1e293b" />
+    </marker>
+
+    <!-- Arrow marker for return call (open arrowhead) -->
+    <marker id="openArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#475569" stroke-width="1.8" />
+    </marker>
+
+    <marker id="waArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#059669" />
+    </marker>
+  </defs>
+
+  <!-- Title & Frame Header -->
+  <rect x="30" y="25" width="1090" height="870" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5"/>
+  <path d="M 30 25 L 260 25 L 280 50 L 30 50 Z" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="45" y="42" font-size="12" font-weight="bold" fill="#0f172a">sd: Atomic Rental Escrow Flow</text>
+
+  <text x="600" y="42" text-anchor="middle" font-size="16" font-weight="bold" fill="#1e3a8a">Sequence Diagram: Peer Item Rental &amp; Atomic Escrow Hold</text>
+
+  <!-- ================= PARTICIPANTS (LIFELINES) ================= -->
+
+  <!-- 1. Borrower (Student) -->
+  <g transform="translate(60, 65)">
+    <rect x="0" y="0" width="110" height="40" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8" filter="url(#shadow)"/>
+    <text x="55" y="18" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a8a">:Borrower</text>
+    <text x="55" y="32" text-anchor="middle" font-size="9.5" fill="#64748b">(Student)</text>
+    <line x1="55" y1="40" x2="55" y2="780" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4"/>
+  </g>
+
+  <!-- 2. Next.js Frontend Client -->
+  <g transform="translate(220, 65)">
+    <rect x="0" y="0" width="120" height="40" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8" filter="url(#shadow)"/>
+    <text x="60" y="18" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a8a">:ClientUI</text>
+    <text x="60" y="32" text-anchor="middle" font-size="9.5" fill="#64748b">(Next.js / React 19)</text>
+    <line x1="60" y1="40" x2="60" y2="780" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4"/>
+  </g>
+
+  <!-- 3. Rental API Route Controller -->
+  <g transform="translate(390, 65)">
+    <rect x="0" y="0" width="130" height="40" rx="4" fill="#f0fdf4" stroke="#059669" stroke-width="1.8" filter="url(#shadow)"/>
+    <text x="65" y="18" text-anchor="middle" font-size="11" font-weight="bold" fill="#065f46">:RentalController</text>
+    <text x="65" y="32" text-anchor="middle" font-size="9.5" fill="#64748b">(/api/rentals)</text>
+    <line x1="65" y1="40" x2="65" y2="780" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4"/>
+  </g>
+
+  <!-- 4. Token Ledger Service -->
+  <g transform="translate(570, 65)">
+    <rect x="0" y="0" width="120" height="40" rx="4" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.8" filter="url(#shadow)"/>
+    <text x="60" y="18" text-anchor="middle" font-size="11" font-weight="bold" fill="#5b21b6">:WalletService</text>
+    <text x="60" y="32" text-anchor="middle" font-size="9.5" fill="#64748b">(Token Ledger)</text>
+    <line x1="60" y1="40" x2="60" y2="780" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4"/>
+  </g>
+
+  <!-- 5. Database (Prisma db.$transaction) -->
+  <g transform="translate(740, 65)">
+    <rect x="0" y="0" width="130" height="40" rx="4" fill="#fffbeb" stroke="#b45309" stroke-width="1.8" filter="url(#shadow)"/>
+    <text x="65" y="18" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e">:Database</text>
+    <text x="65" y="32" text-anchor="middle" font-size="9.5" fill="#64748b">(Prisma $transaction)</text>
+    <line x1="65" y1="40" x2="65" y2="780" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4"/>
+  </g>
+
+  <!-- 6. UltraMsg WhatsApp Gateway -->
+  <g transform="translate(910, 65)">
+    <rect x="0" y="0" width="130" height="40" rx="4" fill="#f0fdfa" stroke="#0d9488" stroke-width="1.8" filter="url(#shadow)"/>
+    <text x="65" y="18" text-anchor="middle" font-size="11" font-weight="bold" fill="#115e59">:UltraMsgGateway</text>
+    <text x="65" y="32" text-anchor="middle" font-size="9.5" fill="#64748b">(WhatsApp Cloud API)</text>
+    <line x1="65" y1="40" x2="65" y2="780" stroke="#94a3b8" stroke-width="1.2" stroke-dasharray="5,4"/>
+  </g>
+
+  <!-- ================= ACTIVATION BARS & MESSAGES ================= -->
+
+  <!-- 1. Borrower interacts with UI -->
+  <rect x="110" y="130" width="10" height="660" fill="#cbd5e1" stroke="#475569"/>
+  <rect x="275" y="145" width="10" height="630" fill="#bfdbfe" stroke="#2563eb"/>
+  
+  <line x1="120" y1="150" x2="275" y2="150" stroke="#1e293b" stroke-width="1.5" marker-end="url(#solidArrow)"/>
+  <text x="195" y="142" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1e293b">1: selectItemAndDates(listingId, 5 days)</text>
+
+  <!-- 2. UI calls API -->
+  <rect x="450" y="170" width="10" height="570" fill="#bbf7d0" stroke="#059669"/>
+  <line x1="285" y1="175" x2="450" y2="175" stroke="#1e293b" stroke-width="1.5" marker-end="url(#solidArrow)"/>
+  <text x="365" y="168" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1e293b">2: POST /api/marketplace/rentals</text>
+
+  <!-- 3. Verify Balance -->
+  <rect x="625" y="195" width="10" height="60" fill="#ddd6fe" stroke="#7c3aed"/>
+  <line x1="460" y1="205" x2="625" y2="205" stroke="#1e293b" stroke-width="1.5" marker-end="url(#solidArrow)"/>
+  <text x="540" y="198" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1e293b">3: verifyTokenBalance(borrowerId, 70 tokens)</text>
+
+  <!-- Self-check on Token -->
+  <path d="M 635 220 L 665 220 L 665 240 L 635 240" fill="none" stroke="#7c3aed" stroke-width="1.3" marker-end="url(#solidArrow)"/>
+  <text x="672" y="234" font-size="9.5" fill="#5b21b6">check: balance &gt;= fee + deposit</text>
+
+  <!-- Return balance ok -->
+  <line x1="625" y1="250" x2="460" y2="250" stroke="#475569" stroke-width="1.4" stroke-dasharray="4,3" marker-end="url(#openArrow)"/>
+  <text x="540" y="244" text-anchor="middle" font-size="10" fill="#475569">4: balanceConfirmed (sufficient balance)</text>
+
+  <!-- ================= OPT / ALT BLOCK: ATOMIC TRANSACTION ================= -->
+  <rect x="415" y="280" width="460" height="340" rx="4" fill="#fffbeb" fill-opacity="0.3" stroke="#b45309" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <path d="M 415 280 L 485 280 L 495 298 L 415 298 Z" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+  <text x="430" y="293" font-size="10.5" font-weight="bold" fill="#92400e">atomic</text>
+  <text x="505" y="294" font-size="10.5" font-weight="bold" fill="#92400e">[ACID db.$transaction Block]</text>
+
+  <!-- Database Activation -->
+  <rect x="800" y="305" width="10" height="295" fill="#fde68a" stroke="#b45309"/>
+
+  <line x1="460" y1="315" x2="800" y2="315" stroke="#1e293b" stroke-width="1.5" marker-end="url(#solidArrow)"/>
+  <text x="630" y="308" text-anchor="middle" font-size="10.5" font-weight="600" fill="#1e293b">5: $transaction.begin()</text>
+
+  <!-- Substep 1: Deduct Tokens -->
+  <path d="M 810 335 L 840 335 L 840 355 L 810 355" fill="none" stroke="#b45309" stroke-width="1.3" marker-end="url(#solidArrow)"/>
+  <text x="848" y="348" font-size="9.5" fill="#92400e">6: User.update(tokenBalance -= 70)</text>
+
+  <!-- Substep 2: Create WalletTransaction -->
+  <path d="M 810 380 L 840 380 L 840 400 L 810 400" fill="none" stroke="#b45309" stroke-width="1.3" marker-end="url(#solidArrow)"/>
+  <text x="848" y="393" font-size="9.5" fill="#92400e">7: WalletTx.create(type: "RENTAL_HOLD", -70)</text>
+
+  <!-- Substep 3: Create Rental -->
+  <path d="M 810 430 L 840 430 L 840 450 L 810 450" fill="none" stroke="#b45309" stroke-width="1.3" marker-end="url(#solidArrow)"/>
+  <text x="848" y="443" font-size="9.5" fill="#92400e">8: MarketplaceRental.create(status: "ACTIVE", locked: 70)</text>
+
+  <!-- Substep 4: Lock Listing -->
+  <path d="M 810 480 L 840 480 L 840 500 L 810 500" fill="none" stroke="#b45309" stroke-width="1.3" marker-end="url(#solidArrow)"/>
+  <text x="848" y="493" font-size="9.5" fill="#92400e">9: Listing.update(isRentedOut: true, available: false)</text>
+
+  <!-- Commit -->
+  <path d="M 810 535 L 840 535 L 840 555 L 810 555" fill="none" stroke="#059669" stroke-width="1.4" marker-end="url(#solidArrow)"/>
+  <text x="848" y="548" font-size="9.5" font-weight="bold" fill="#047857">10: $transaction.commit()</text>
+
+  <!-- DB Return -->
+  <line x1="800" y1="585" x2="460" y2="585" stroke="#475569" stroke-width="1.4" stroke-dasharray="4,3" marker-end="url(#openArrow)"/>
+  <text x="630" y="578" text-anchor="middle" font-size="10" fill="#475569">11: rentalRecordCreated (id, lockedDeposit: 70)</text>
+
+  <!-- 12. UltraMsg WhatsApp Async Dispatch -->
+  <rect x="970" y="630" width="10" height="60" fill="#99f6e4" stroke="#0d9488"/>
+  <line x1="460" y1="640" x2="970" y2="640" stroke="#059669" stroke-width="1.5" marker-end="url(#waArrow)"/>
+  <text x="715" y="633" text-anchor="middle" font-size="10.5" font-weight="600" fill="#047857">12: dispatchWhatsAppMessage(lenderPhone, itemTitle, borrowerName)</text>
+
+  <line x1="970" y1="680" x2="460" y2="680" stroke="#475569" stroke-width="1.4" stroke-dasharray="4,3" marker-end="url(#openArrow)"/>
+  <text x="715" y="674" text-anchor="middle" font-size="10" fill="#475569">13: 200 messageQueued (HTTP 200)</text>
+
+  <!-- 14. API Returns to UI -->
+  <line x1="450" y1="725" x2="285" y2="725" stroke="#475569" stroke-width="1.4" stroke-dasharray="4,3" marker-end="url(#openArrow)"/>
+  <text x="365" y="718" text-anchor="middle" font-size="10" font-weight="600" fill="#1e293b">14: 201 Created (rentalSuccess, newBalance)</text>
+
+  <!-- 15. UI confirms to Borrower -->
+  <line x1="275" y1="765" x2="120" y2="765" stroke="#475569" stroke-width="1.4" stroke-dasharray="4,3" marker-end="url(#openArrow)"/>
+  <text x="195" y="758" text-anchor="middle" font-size="10" font-weight="600" fill="#1e293b">15: renderSuccessView(activeRentalPass)</text>
+
+</svg>
