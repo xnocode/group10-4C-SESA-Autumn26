@@ -1,82 +1,132 @@
-# UniShare
+# UniShare — Group 10
 
-> **Your campus, one big shared shelf.**
->
-> A verified university‑only platform where students lend and borrow gear with atomic token escrow, coordinate destination‑matched shared commutes, manage peer‑to‑peer wallet transfers, and trigger one‑tap emergency SOS alerts.
+> **A verified, campus-only peer-to-peer sharing and ride-matching platform for university students in Bangladesh.**
 
----
-
-## Live Demo
-
-[https://unishare.online](https://unishare.online)  
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/xnocode/unishare-group10)
+| | |
+|---|---|
+| 🌐 **Live Site** | [https://unishare.online](https://unishare.online) |
+| 📦 **Stack** | Next.js 16 · React 19 · TypeScript · Prisma · Supabase |
+| 🚀 **Hosting** | Vercel (serverless) + Supabase PostgreSQL |
 
 ---
 
-## Table of Contents
+## 📑 Table of Contents
 
-- [Why UniShare?](#why-unishare)
-- [Tech Stack](#tech-stack)
-- [Getting Started (Local Development)](#getting-started-local-development)
-- [Repository Structure](#repository-structure)
-- [License](#license)
-
----
-
-## Why UniShare?
-
-1. **Verified University Network** – supports **178 Bangladeshi universities** (`src/app/lib/bd-universities.ts`).
-2. **All‑in‑One Campus Utility** – Marketplace, Ride‑Matching, Wallet/Escrow, SOS.
-3. **Zero‑Friction Economics** – Token escrow, refundable deposits, instant peer‑to‑peer transfers.
+1. [Project Documents](#-project-documents)
+2. [Features](#-features)
+3. [Tech Stack](#-tech-stack)
+4. [Local Setup Guide](#-local-setup-guide)
+5. [Environment Variables](#-environment-variables)
+6. [Repository Structure](#-repository-structure)
 
 ---
 
-## Tech Stack
+## 📂 Project Documents
 
-- **Framework**: Next.js 16 (App Router) + React 19 + TypeScript 5
-- **Styling**: Tailwind CSS v4, CSS Modules, Lucide icons
-- **Database & ORM**: Prisma 6 → PostgreSQL on Supabase (SQLite fallback via `scripts/prepare-prisma.js`)
-- **Cloud Services**: Supabase Storage, Resend (email), Twilio & UltraMsg (SMS/WhatsApp), OpenStreetMap Nominatim
-- **Deployment**: Vercel (static & server‑less functions)
+All project documentation is in the [`documents/`](documents/) folder:
+
+| Document | File |
+|---|---|
+| Software Requirements Specification (SRS) | [`documents/UniShare_SRS.pdf`](documents/UniShare_SRS.pdf) |
+| Data Flow Diagram (DFD) | [`documents/Group_10_Unishare_DFD (2).pdf`](<documents/Group_10_Unishare_DFD (2).pdf>) |
+| Entity Relationship Diagram (ER) | [`documents/Group_10_Unishare_ER Diagram (2).pdf`](<documents/Group_10_Unishare_ER Diagram (2).pdf>) |
+| Software Testing & QA Lab Report | [`documents/Software Testing & Quality Assurance Lab Report.pdf`](<documents/Software Testing & Quality Assurance Lab Report.pdf>) |
+| Figma Design File | [`documents/figma/UniShare.fig`](documents/figma/UniShare.fig) |
+| Class Diagram (SVG) | [`documents/images/UniShare_Class_Diagram.svg`](documents/images/UniShare_Class_Diagram.svg) |
+| DFD Level 0 & 1 (SVG) | [`documents/images/UniShare_DFD_Level_0_and_1.svg`](documents/images/UniShare_DFD_Level_0_and_1.svg) |
+| DFD Level 2 (SVG) | [`documents/images/UniShare_DFD_Level_2.svg`](documents/images/UniShare_DFD_Level_2.svg) |
+| ER Diagram (SVG) | [`documents/images/UniShare_ER_Diagram.svg`](documents/images/UniShare_ER_Diagram.svg) |
+| Sequence Diagram (SVG) | [`documents/images/UniShare_Sequence_Diagram.svg`](documents/images/UniShare_Sequence_Diagram.svg) |
+| Database & Storage Architecture | [`docs/DATA_STORAGE.md`](docs/DATA_STORAGE.md) |
 
 ---
 
-## Getting Started (Local Development)
+## ✨ Features
+
+- **Verified University Network** — 178 Bangladeshi universities, email OTP + student ID KYC
+- **Peer Marketplace** — Rent/lend lab equipment, books, electronics with token escrow
+- **Campus Ride Matching** — Corridor-based ride matching with live chat & GPS tracking
+- **Wallet & Escrow** — Internal token economy, peer transfers, refundable deposits
+- **Emergency SOS** — One-tap GPS alert, secure tracking link, WhatsApp/SMS dispatch
+
+---
+
+## 🛠 Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 16 (App Router + Turbopack) |
+| Language | TypeScript 5 |
+| Styling | Tailwind CSS v4, CSS Modules, Lucide Icons |
+| ORM | Prisma 6 |
+| Database | PostgreSQL (Supabase) · SQLite (local fallback) |
+| File Storage | Supabase Storage |
+| Email | Resend API |
+| Maps | OpenStreetMap Nominatim + Google Maps API |
+| SOS Alerts | UltraMsg (WhatsApp) |
+| Deployment | Vercel |
+
+---
+
+## 💻 Local Setup Guide
+
+### Prerequisites
+
+- **Node.js 20+** — [Download](https://nodejs.org)
+- **npm 10+** (included with Node)
+- **Git** — [Download](https://git-scm.com)
+
+### Step 1 — Clone the repository
 
 ```bash
-# 1. Clone the repository
 git clone https://github.com/xnocode/unishare-group10.git
 cd unishare-group10
-
-# 2. Install dependencies
-npm install
-
-# 3. Create a local environment file
-cp .env.example .env.local
-#   Edit .env.local and fill in the required keys:
-#   - DATABASE_URL (PostgreSQL URL or "file:./dev.db" for SQLite)
-#   - AUTH_SECRET
-#   - SUPABASE_URL / SUPABASE_SERVICE_ROLE_KEY
-#   - RESEND_API_KEY
-#   - ULTRAMSG_API_KEY, TWILIO_*, GOOGLE_MAPS_API_KEY, etc.
-
-# 4. Prepare the database schema (SQLite will be used automatically if DATABASE_URL starts with "file:")
-node scripts/prepare-prisma.js
-npx prisma db push   # creates tables / runs migrations
-
-# 5. Run the development server
-npm run dev
-#    Open http://localhost:3000 in your browser.
 ```
 
-### Production Build
+### Step 2 — Install dependencies
+
+```bash
+npm install
+```
+
+### Step 3 — Set up environment variables
+
+```bash
+cp .env.example .env.local
+```
+
+Open `.env.local` and fill in the required values (see [Environment Variables](#-environment-variables) below).
+
+> **Quick start (no cloud account needed):** Set `DATABASE_URL="file:./dev.db"` to use a local SQLite database — no Supabase or PostgreSQL setup required. Email OTP and file uploads will not work without their respective API keys.
+
+### Step 4 — Set up the database
+
+```bash
+# Auto-selects PostgreSQL or SQLite based on your DATABASE_URL
+node scripts/prepare-prisma.js
+
+# Push the schema to your database (creates all tables)
+npx prisma db push
+```
+
+### Step 5 — Run the development server
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser. ✅
+
+---
+
+### Production Build (optional)
 
 ```bash
 npm run build
-npm start   # runs the compiled Next.js server
+npm start
 ```
 
-### Linting & Type‑checking (recommended before commit)
+### Lint & Type-check
 
 ```bash
 npm run lint
@@ -85,41 +135,75 @@ npx tsc --noEmit
 
 ---
 
-## Repository Structure
+## 🔑 Environment Variables
+
+Copy [`.env.example`](.env.example) → `.env.local` and fill in the values:
+
+| Variable | Required | Description |
+|---|---|---|
+| `DATABASE_URL` | ✅ | PostgreSQL URL **or** `file:./dev.db` for local SQLite |
+| `DIRECT_URL` | Optional | Direct DB URL (needed if using PgBouncer pooling) |
+| `AUTH_SECRET` | ✅ | Random 32+ character secret for signing session cookies |
+| `SUPABASE_URL` | For uploads | Your Supabase project URL |
+| `SUPABASE_SERVICE_ROLE_KEY` | For uploads | Supabase service role key |
+| `RESEND_API_KEY` | For email OTP | [Resend](https://resend.com) API key |
+| `RESEND_FROM` | For email OTP | Sender address e.g. `UniShare <no-reply@example.com>` |
+| `ULTRAMSG_INSTANCE_ID` | For SOS | UltraMsg WhatsApp instance ID |
+| `ULTRAMSG_TOKEN` | For SOS | UltraMsg API token |
+| `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | For maps | Google Maps JavaScript API key |
+
+---
+
+## 📁 Repository Structure
 
 ```
-.
-├─ docs
-│   └─ [DATA_STORAGE.md](file:///home/ridoy/Downloads/unishare-group10/docs/DATA_STORAGE.md)
-├─ src
-│   ├─ app
-│   │   ├─ api
-│   │   │   ├─ auth            # authentication routes
-│   │   │   ├─ rides           # ride‑matching APIs
-│   │   │   ├─ marketplace     # product marketplace APIs
-│   │   │   └─ sos             # emergency SOS APIs
-│   │   ├─ lib
-│   │   │   ├─ [auth.ts](file:///home/ridoy/Downloads/unishare-group10/src/app/lib/auth.ts)
-│   │   │   ├─ [otp-service.ts](file:///home/ridoy/Downloads/unishare-group10/src/app/lib/otp-service.ts)
-│   │   │   ├─ [bd‑universities.ts](file:///home/ridoy/Downloads/unishare-group10/src/app/lib/bd-universities.ts)
-│   │   │   └─ …
-│   │   └─ pages (Next.js app router pages)
-│   ├─ prisma
-│   │   └─ [schema.prisma](file:///home/ridoy/Downloads/unishare-group10/prisma/schema.prisma)
-│   └─ scripts
-│       └─ [prepare-prisma.js](file:///home/ridoy/Downloads/unishare-group10/scripts/prepare-prisma.js)
-├─ public                     # static assets
-├─ package.json
-├─ README.md   ← this file
-└─ ...
+unishare-group10/
+│
+├── documents/                        ← All project documents (SRS, diagrams, reports)
+│   ├── UniShare_SRS.pdf
+│   ├── Group_10_Unishare_DFD (2).pdf
+│   ├── Group_10_Unishare_ER Diagram (2).pdf
+│   ├── Software Testing & Quality Assurance Lab Report.pdf
+│   ├── figma/UniShare.fig
+│   └── images/                       ← SVG diagrams (Class, DFD, ER, Sequence)
+│
+├── docs/
+│   └── DATA_STORAGE.md               ← Database schema & storage architecture
+│
+├── prisma/
+│   └── schema.prisma                 ← Database schema (all models)
+│
+├── scripts/
+│   └── prepare-prisma.js             ← Auto-switches Prisma between PostgreSQL & SQLite
+│
+├── src/app/
+│   ├── api/                          ← All Next.js API route handlers
+│   │   ├── auth/                     ← Login, register, OTP, verification
+│   │   ├── marketplace/              ← Listings, rentals, escrow
+│   │   ├── rides/                    ← Ride matching, chat, GPS tracking
+│   │   ├── wallet/                   ← Token transfers, top-up
+│   │   └── sos/                      ← Emergency SOS, WhatsApp dispatch
+│   │
+│   ├── lib/                          ← Shared server utilities
+│   │   ├── auth.ts                   ← Session management, password hashing
+│   │   ├── otp-service.ts            ← OTP generation, rate-limiting, HMAC storage
+│   │   ├── bd-universities.ts        ← 178 Bangladeshi university records
+│   │   ├── db.ts                     ← Prisma client singleton
+│   │   └── cloud-storage.ts          ← Supabase Storage helpers
+│   │
+│   ├── marketplace/                  ← Marketplace UI pages
+│   ├── rides/                        ← Ride matching UI
+│   ├── wallet/                       ← Wallet & token UI
+│   ├── sos/                          ← SOS UI
+│   └── ...                           ← Other pages (login, register, settings, etc.)
+│
+├── public/                           ← Static assets
+├── .env.example                      ← Environment variable template
+├── next.config.ts
+├── package.json
+└── README.md
 ```
 
 ---
 
-## License
-
-This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
-
----
-
-*Generated by Antigravity – a lightweight AI assistant for software engineering.*
+> Built for CSE Final Year Project — Group 10 | UniShare © 2026
