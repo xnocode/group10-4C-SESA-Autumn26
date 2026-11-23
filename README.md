@@ -31,6 +31,7 @@ All project documentation is in the [`documents/`](documents/) folder:
 | Data Flow Diagram (DFD) | [`documents/Group_10_Unishare_DFD (2).pdf`](<documents/Group_10_Unishare_DFD (2).pdf>) |
 | Entity Relationship Diagram (ER) | [`documents/Group_10_Unishare_ER Diagram (2).pdf`](<documents/Group_10_Unishare_ER Diagram (2).pdf>) |
 | Software Testing & QA Lab Report | [`documents/Software Testing & Quality Assurance Lab Report.pdf`](<documents/Software Testing & Quality Assurance Lab Report.pdf>) |
+| SESA Lab Final Report (Autumn 2026) | [`documents/SESALAB_Final_Report_Format_Autumn_2026_LONG.pdf`](documents/SESALAB_Final_Report_Format_Autumn_2026_LONG.pdf) |
 | Figma Design File | [`documents/figma/UniShare.fig`](documents/figma/UniShare.fig) |
 | Class Diagram (SVG) | [`documents/images/UniShare_Class_Diagram.svg`](documents/images/UniShare_Class_Diagram.svg) |
 | DFD Level 0 & 1 (SVG) | [`documents/images/UniShare_DFD_Level_0_and_1.svg`](documents/images/UniShare_DFD_Level_0_and_1.svg) |
