@@ -19,7 +19,6 @@
 - [Tech Stack](#tech-stack)
 - [Getting Started (Local Development)](#getting-started-local-development)
 - [Repository Structure](#repository-structure)
-- [Team & Contributions](#team--contributions)
 - [License](#license)
 
 ---
@@ -114,19 +113,6 @@ npx tsc --noEmit
 ├─ README.md   ← this file
 └─ ...
 ```
-
----
-
-## Team & Contributions
-
-| Member | Commits |
-|---|---|
-| Ridoy | 71 |
-| Shuddha | 33 |
-| Md AL‑Shahriar Tanvir | 9 |
-| Rodela | 6 |
-
-The numbers above are taken from `git shortlog -sne`. Each member is responsible for the modules indicated in the commit history (see the repository’s Pull‑Request list for details).
 
 ---
 
